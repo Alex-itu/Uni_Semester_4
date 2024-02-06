@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zCPFWW5rH9vWyKSWnqhGIYKca/7v20Niq2dyj8Rx3all5catU4YCjL/R8Z9hJNC+dSMHI13kydckBc4L4Kbm6Q==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\Alexa\\FuncSharp\\Ass\\1\\FirstIonideProject\\FirstIonideProject.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alexa\\.nuget\\packages\\fsharp.core\\8.0.100\\fsharp.core.8.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}
