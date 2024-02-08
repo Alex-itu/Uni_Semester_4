@@ -1,32 +1,36 @@
 ﻿
 module Assignment2
-    let downto1 n = 
+    // let downto1Extra n = 
+    //     if n > 0 then
+    //         [n.. -1 ..1]
+    //     else
+    //         []
+    let rec downto1 n =
         if n > 0 then
-            [n.. -1 ..1]
+            n :: downto1 (n-1)
         else
-            []
-    
-    let downTo1Extra n = 
-        if n > 0 then
-            []
-        else
-            []
-
-    let downto2 n = 
+         []
+            
+    let rec downto2 n = 
         match n with
-        | 0 -> []
+        | n when n = 0 -> []
         | n when n < 0 -> []
-        | n when n > 0 -> [n.. -1 ..1] 
+        | n when n > 0 -> n :: downto2 (n-1)
 
 
-    let removeOddIdx (xs : 'a list) = 
-        [for i in 0.. (xs.Length-1) do
-            if i % 2 = 0 then xs.Item(i)]
-
-    let removeOddIdxExtra (xs : 'a list) = 
+    let rec removeOddIdx (xs : 'a list) = 
         match xs with
-        | head :: head :: tail ->  
-        |
+        | [] -> []
+        | h :: h2 :: t ->   h :: removeOddIdx t
+
+    let re (xs : 'a list) = 
+        match xs with
+        | [] -> []
+        | h :: h2 :: t ->   h :: t
+
+    // let removeOddIdxExtra (xs : 'a list) = 
+    //     [for i in 0.. (xs.Length-1) do
+    //         if i % 2 = 0 then xs.Item(i)]
 
     let rec combinePair (xs : 'a list) = 
         match xs with
