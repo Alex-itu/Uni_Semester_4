@@ -6,15 +6,27 @@ module Assignment2
         else
             []
     
+    let downTo1Extra n = 
+        if n > 0 then
+            []
+        else
+            []
+
     let downto2 n = 
         match n with
         | 0 -> []
         | n when n < 0 -> []
         | n when n > 0 -> [n.. -1 ..1] 
 
+
     let removeOddIdx (xs : 'a list) = 
         [for i in 0.. (xs.Length-1) do
             if i % 2 = 0 then xs.Item(i)]
+
+    let removeOddIdxExtra (xs : 'a list) = 
+        match xs with
+        | head :: head :: tail ->  
+        |
 
     let rec combinePair (xs : 'a list) = 
         match xs with
