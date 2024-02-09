@@ -21,12 +21,8 @@ module Assignment2
     let rec removeOddIdx (xs : 'a list) = 
         match xs with
         | [] -> []
-        | h :: h2 :: t ->   h :: removeOddIdx t
-
-    let re (xs : 'a list) = 
-        match xs with
-        | [] -> []
-        | h :: h2 :: t ->   h :: t
+        | [h] -> [h]
+        | h :: h2 :: t ->  h :: removeOddIdx t
 
     // let removeOddIdxExtra (xs : 'a list) = 
     //     [for i in 0.. (xs.Length-1) do
@@ -34,28 +30,31 @@ module Assignment2
 
     let rec combinePair (xs : 'a list) = 
         match xs with
-        | [] -> 0
-        | 
-    //[for i in xs -> (i*i) ]
+        | [] -> []
+        | [a] -> []
+        | h :: h2 :: t -> (h, h2) :: combinePair t
 
     type complex = unit // Fill in your type here
     let mkComplex _ = failwith "not implemented"
-    let complexToPair _ = failwith "not implemented"
+    let complexToPair a = failwith "not implemented"
     let (|+|) _ = failwith "not implemented"
     let (|*|) _ = failwith "not implemented"
     let (|-|) _ = failwith "not implemented"
     let (|/|) _ = failwith "not implemented"
 
-    let explode1 _ = failwith "not implemented"
+    let explode1 (s : string) = s.ToCharArray() |> List.ofArray 
 
-    let rec explode2 _ = failwith "not implemented"
+    let rec explode2 s = 
+        match s with
+        | "" -> []
+        | _ -> s[0] :: explode2 s[1..(s.Length-1)]
 
-    let implode _ = failwith "not implemented"
-    let implodeRev _ = failwith "not implemented"
+    let implode (cs : char List) = List.foldBack (fun c1 c2 -> string c1 + c2) cs ""
+    let implodeRev (cs : char List) = List.fold (fun c1 c2 ->  string c2 + c1) "" cs
 
-    let toUpper _ = failwith "not implemented"
+    let toUpper = explode1 >> List.map (fun s -> System.Char.ToUpper(s)) >> implode
 
-    let ack _ = failwith "not implemented"
+    let rec ack (m, n) = failwith "not implemented"
 
 
 
