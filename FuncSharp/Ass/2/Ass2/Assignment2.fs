@@ -1,4 +1,4 @@
-﻿
+
 module Assignment2
     // let downto1Extra n = 
     //     if n > 0 then
@@ -34,15 +34,13 @@ module Assignment2
         | [a] -> []
         | h :: h2 :: t -> (h, h2) :: combinePair t
 
-
-    // don't think this is right
     type complex = Complex of float * float // Fill in your type here
     let mkComplex a b = Complex (a, b)
     let complexToPair (Complex (x, y))  =  (x, y)
     let (|+|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex (((x1) + (x2)), ((z1) + (z2)))
     let (|*|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex ((((x1)*(x2)) - ((z1)*(z2))), (((x2)*(z1)) + ((x1)*(z2))))
-    let (|-|) (Complex (x1, z1)) (Complex (x2, z2)) =  Complex (((x1) + (x2)), ((z1) + (z2)))
-    let (|/|) (Complex (x1, z1)) (Complex (x2, z2)) = ((x1/((x1*z1)), (x1,x1)))
+    let (|-|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex (((x1) - (x2)), ((z1) - (z2)))
+    let (|/|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex ((x1/((x1*z1)), ())
 
     let explode1 (s : string) = s.ToCharArray() |> List.ofArray 
 
@@ -58,10 +56,9 @@ module Assignment2
 
     let rec ack ((m : int), (n : int)) = 
         match (m, n) with
-        | m, n when m = 0 -> n + 1
-        | m, n when m > 0 && n = 0 -> ack((m-1), 1)
-        | m, n when m > 0 && n > 0 -> ack(m-1, ack(m,(n-1)))
-        | m, n when m < 0 || n < 0 ->  failwith "not implemented"
+        | 0, n -> n + 1
+        | m, 0 -> ack((m-1), 1)
+        | m, n -> ack(m-1, ack(m,(n-1)))
 
 
 
