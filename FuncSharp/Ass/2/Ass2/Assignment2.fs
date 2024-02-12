@@ -34,13 +34,20 @@ module Assignment2
         | [a] -> []
         | h :: h2 :: t -> (h, h2) :: combinePair t
 
-    type complex = Complex of float * float // Fill in your type here
-    let mkComplex a b = Complex (a, b)
-    let complexToPair (Complex (x, y))  =  (x, y)
-    let (|+|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex (((x1) + (x2)), ((z1) + (z2)))
-    let (|*|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex ((((x1)*(x2)) - ((z1)*(z2))), (((x2)*(z1)) + ((x1)*(z2))))
-    let (|-|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex (((x1) - (x2)), ((z1) - (z2)))
-    let (|/|) (Complex (x1, z1)) (Complex (x2, z2)) = Complex ((x1/((x1*z1)), ())
+    // don't think this is right, but can also be done with this
+    // type complex = Complex of float * float
+    // Complex (x, z)
+    
+    // This is more right i think
+    type complex = { x: float; z: float }
+    let mkComplex pairX pairZ = {x = pairX; z = pairZ}
+    let complexToPair plex  = (plex.x, plex.z)
+    let (|+|) plex1 plex2 = mkComplex (plex1.x + plex2.x) (plex1.z + plex2.z) 
+    let (|*|) plex1 plex2 = 
+        mkComplex ((plex1.x * plex2.x) - (plex1.z * plex2.z)) ((plex1.z * plex2.x) + (plex1.x * plex2.z)) 
+    let (|-|) plex1 plex2 = plex1 |+| mkComplex (-plex2.x) (-plex2.z) 
+    let (|/|) plex1 plex2 = 
+        mkComplex (((plex1.x * plex2.x) + (plex1.z * plex2.z)) / ((plex2.x * plex2.x) + (plex2.z * plex2.z))) (((plex1.z * plex2.x) - (plex1.x * plex2.z)) / ((plex2.x * plex2.x) + (plex2.z * plex2.z)))
 
     let explode1 (s : string) = s.ToCharArray() |> List.ofArray 
 
@@ -56,9 +63,10 @@ module Assignment2
 
     let rec ack ((m : int), (n : int)) = 
         match (m, n) with
-        | 0, n -> n + 1
-        | m, 0 -> ack((m-1), 1)
-        | m, n -> ack(m-1, ack(m,(n-1)))
+        | m, n when m = 0 -> n + 1
+        | m, n when m > 0 && n = 0 -> ack((m-1), 1)
+        | m, n when m > 0 && n > 0 -> ack(m-1, ack(m,(n-1)))
+        | m, n when m < 0 || n < 0 ->  failwith "not implemented"
 
 
 
