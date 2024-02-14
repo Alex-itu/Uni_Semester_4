@@ -1,4 +1,4 @@
-﻿
+
 module Assignment2
     // let downto1Extra n = 
     //     if n > 0 then
@@ -34,9 +34,11 @@ module Assignment2
         | [a] -> []
         | h :: h2 :: t -> (h, h2) :: combinePair t
 
-    // don't think this is right, but can also with this
+    // don't think this is right, but can also be done with this
     // type complex = Complex of float * float
     // Complex (x, z)
+    
+    // This is more right i think
     type complex = { x: float; z: float }
     let mkComplex pairX pairZ = {x = pairX; z = pairZ}
     let complexToPair plex  = (plex.x, plex.z)
@@ -45,7 +47,7 @@ module Assignment2
         mkComplex ((plex1.x * plex2.x) - (plex1.z * plex2.z)) ((plex1.z * plex2.x) + (plex1.x * plex2.z)) 
     let (|-|) plex1 plex2 = plex1 |+| mkComplex (-plex2.x) (-plex2.z) 
     let (|/|) plex1 plex2 = 
-        mkComplex ((plex1.x * plex2.x) + (plex1.z * plex2.z) / ((plex2.x * plex2.x) + (plex2.z * plex2.z))) (((plex1.z * plex2.x) - (plex1.x * plex2.z)) / ((plex2.x * plex2.x) + (plex2.z * plex2.z)))
+        mkComplex (((plex1.x * plex2.x) + (plex1.z * plex2.z)) / ((plex2.x * plex2.x) + (plex2.z * plex2.z))) (((plex1.z * plex2.x) - (plex1.x * plex2.z)) / ((plex2.x * plex2.x) + (plex2.z * plex2.z)))
 
     let explode1 (s : string) = s.ToCharArray() |> List.ofArray 
 
