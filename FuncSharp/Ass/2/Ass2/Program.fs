@@ -21,7 +21,7 @@ module Assignment2
     let rec removeOddIdx (xs : 'a list) = 
         match xs with
         | [] -> []
-        | h :: h2 :: t ->   h :: removeOddIdx t
+        | h :: h2 :: t ->  h :: removeOddIdx t
 
     let re (xs : 'a list) = 
         match xs with
