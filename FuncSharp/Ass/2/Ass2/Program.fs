@@ -76,7 +76,7 @@ module Assignment2
     type word = (char * int) list
 
 
-    let hello = [] // Fill in your answer here
+    let hello = ['h'; 'e'; 'l'; 'l'; 'o'] // Fill in your answer here
 
     type squareFun = (char * int) list -> int -> int -> int
 

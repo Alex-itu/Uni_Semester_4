@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lL/mbNDL5ucEDgyr4iF7JbpSJFqs2a2P71yq9rd87xZgeeFGChGyQqIg0hNasEtU2uH9jdBohop+XKvMXOIICg==",
+  "success": true,
+  "projectFilePath": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\3\\Ass3\\Ass3.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alexander\\.nuget\\packages\\fsharp.core\\8.0.100\\fsharp.core.8.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}

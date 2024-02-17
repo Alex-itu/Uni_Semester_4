@@ -49,25 +49,5 @@ sort(li)
 #print(li)
 
 text = ""
-
-for i in range(n):
-    if i == 0:
-        text += "" + str(li[i])
-    else:
-        if li[i-1] == (li[i]-1):
-            if i+1 < len(li) and li[i+1] == (li[i]+1):
-                if i-2 >= 0 and li[i-1] == (li[i]-1) and li[i-2] == (li[i]-2):
-                    text += ""
-                else:
-                    text += "-"
-            elif i-2 >= 0 and li[i-1] == (li[i]-1) and li[i-2] == (li[i]-2):
-                text += "" + str(li[i])
-            else:
-                text += " " + str(li[i])
-        else:
-            if i-2 >= 0 and li[i-1] == (li[i]-1) and li[i-2] == (li[i]-2):
-                text += "" + str(li[i])
-            else:
-                text += " " + str(li[i])
             
 print(text)
