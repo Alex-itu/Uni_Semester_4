@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "U007vH4nK+jm4YTOTJ3kAz3DL/fOBjHE5pu2ZcXO9oxya84E+8C5wtXuBNcGuc0fYlO/CQfGJViGgthtVwqV/A==",
+  "success": true,
+  "projectFilePath": "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2024/Assignments/Assignments/Assignment4/Assignment4.fsproj",
+  "expectedPackageFiles": [
+    "/Users/jebe/.nuget/packages/fsharp.core/7.0.0/fsharp.core.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

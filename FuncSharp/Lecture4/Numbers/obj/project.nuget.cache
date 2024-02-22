@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gdkMwOFseNMQ7kDvNPzHJtvOgGfele9+vHRI3LziRf20b0oUojcMjQ8A6d54rPAh8Qz1yTRDKe6KlyfhL6ZUBQ==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Lecture4\\Numbers\\Numbers.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alexa\\.nuget\\packages\\fsharp.core\\8.0.100\\fsharp.core.8.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}

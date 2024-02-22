@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
+    "net8.0": {
       "FSharp.Core/8.0.100": {
         "type": "package",
         "compile": {
@@ -103,7 +103,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net8.0": [
       "FSharp.Core >= 8.0.100"
     ]
   },
@@ -113,32 +113,32 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\3\\Assignment3\\Assignment3.fsproj",
-      "projectName": "Assignment3",
-      "projectPath": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\3\\Assignment3\\Assignment3.fsproj",
+      "projectUniqueName": "C:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\Ass4.fsproj",
+      "projectName": "Ass4",
+      "projectPath": "C:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\Ass4.fsproj",
       "packagesPath": "C:\\Users\\Alexa\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\3\\Assignment3\\obj\\",
+      "outputPath": "C:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files\\dotnet\\sdk\\8.0.100\\FSharp\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "FSharp.Core": {
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
@@ -158,26 +158,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[7.0.14, 7.0.14]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,18 +1,40 @@
 ﻿module Ass3
 
-  open Types
+    type aExp =
+        | N of int
+        | V of string
+        | WL
+        | PV of aExp
+        | Add of aExp * aExp
+        | Sub of aExp * aExp
+        | Mul of aExp * aExp
+
+    let (.+.) a b = Add (a, b)
+    let (.-.) a b = Sub (a, b)
+    let (.*.) a b = Mul (a, b)
     
-   let a1 = N 42
-   let a2 = N 4 .+. (N 5 .-. N 6)
-   let a3 = N 4 .*. N 2 .+. N 34
-   let a4 = (N 4 .+. N 2) .*. N 34
-   let a5 = N 4 .+. (N 2 .*. N 34)
-   let rec arithEvalSimple a =
-    match a with
-    | N x -> x
-    | Add(x,z) -> arithEvalSimple(x) + arithEvalSimple(z)
-    | Sub(x, z) -> arithEvalSimple(x) - arithEvalSimple(z)
-    | Mul(x, z) -> arithEvalSimple(x) * arithEvalSimple(z)
+    
+    type word = (char * int) list
+    type squareFun = word -> int -> int -> int
+    
+    let arithSingleLetterScore = PV (V "_pos_") .+. (V "_acc_")
+    let arithDoubleLetterScore = ((N 2) .*. PV (V "_pos_")) .+. (V "_acc_")
+    let arithTripleLetterScore = ((N 3) .*. PV (V "_pos_")) .+. (V "_acc_")
+
+    let arithDoubleWordScore = N 2 .*. V "_acc_"
+    let arithTripleWordScore = N 3 .*. V "_acc_"
+    
+    let a1 = N 42
+    let a2 = N 4 .+. (N 5 .-. N 6)
+    let a3 = N 4 .*. N 2 .+. N 34
+    let a4 = (N 4 .+. N 2) .*. N 34
+    let a5 = N 4 .+. (N 2 .*. N 34)
+    let rec arithEvalSimple a =
+      match a with
+      | N x -> x
+      | Add(x,z) -> arithEvalSimple(x) + arithEvalSimple(z)
+      | Sub(x, z) -> arithEvalSimple(x) - arithEvalSimple(z)
+      | Mul(x, z) -> arithEvalSimple(x) * arithEvalSimple(z)
     
     let a6 = V "x"
     let a7 = N 4 .+. (V "y" .-. V "z")
@@ -27,8 +49,8 @@
       | Sub(x, z) -> arithEvalState x s - arithEvalState z s
       | Mul(x, z) -> arithEvalState x s * arithEvalState z s
       | _ -> 0
-              
-              
+
+
     let hello : word = [('H', 4); ('e', 1); ('l', 1); ('l', 1); ('o', 1)] // Insert your version of hello here from the last assignment
 
     let rec arithEval a w s = 
@@ -39,18 +61,18 @@
                         | None -> 0
       | WL -> List.length w
       | PV x -> match w |> List.tryItem(arithEval x w s) with
-                        | Some (_, pv) -> pv
-                        | _ -> 0
+                      | Some (_, pv) -> pv
+                      | _ -> 0
       | Add(x, z) -> arithEval x w s + arithEval z w s
       | Sub(x, z) -> arithEval x w s - arithEval z w s
       | Mul(x, z) -> arithEval x w s * arithEval z w s
       | _ -> 0
 
     type cExp =
-       | C  of char      (* Character value *)
-       | ToUpper of cExp (* Converts lower case to upper case character, non-characters unchanged *)
-       | ToLower of cExp (* Converts upper case to lower case character, non characters unchanged *)
-       | CV of aExp      (* Character lookup at word index *)
+        | C  of char      (* Character value *)
+        | ToUpper of cExp (* Converts lower case to upper case character, non-characters unchanged *)
+        | ToLower of cExp (* Converts upper case to lower case character, non characters unchanged *)
+        | CV of aExp      (* Character lookup at word index *)
 
     let rec charEval c w s = 
       match c with
@@ -62,18 +84,18 @@
                                 | _ -> C ' ') w s
 
     type bExp =             
-       | TT                   (* true *)
-       | FF                   (* false *)
+        | TT                   (* true *)
+        | FF                   (* false *)
 
-       | AEq of aExp * aExp   (* numeric equality *)
-       | ALt of aExp * aExp   (* numeric less than *)
+        | AEq of aExp * aExp   (* numeric equality *)
+        | ALt of aExp * aExp   (* numeric less than *)
 
-       | Not of bExp           (* boolean not *)
-       | Conj of bExp * bExp   (* boolean conjunction *)
+        | Not of bExp           (* boolean not *)
+        | Conj of bExp * bExp   (* boolean conjunction *)
 
-       | IsDigit of cExp       (* check for digit *)
-       | IsLetter of cExp      (* check for letter *)
-       | IsVowel of cExp       (* check for vowel *)
+        | IsDigit of cExp       (* check for digit *)
+        | IsLetter of cExp      (* check for letter *)
+        | IsVowel of cExp       (* check for vowel *)
 
     let (~~) b = Not b
     let (.&&.) b1 b2 = Conj (b1, b2)
@@ -88,11 +110,7 @@
     let isVowel c = 
       let bigC = System.Char.ToUpper(charEval c [] Map.empty)
       match bigC with
-      | 'A' -> true
-      | 'E' -> true
-      | 'I' -> true
-      | 'O' -> true
-      | 'U' -> true
+      | 'A' | 'E' | 'I' | 'O' | 'U' -> true
       | _ -> false
 
     let rec boolEval b w s = 
@@ -113,11 +131,11 @@
     let isConsonant _ = failwith "not implemented"
 
     type stmnt =
-       | Skip                        (* does nothing *)
-       | Ass of string * aExp        (* variable assignment *)
-       | Seq of stmnt * stmnt        (* sequential composition *)
-       | ITE of bExp * stmnt * stmnt (* if-then-else statement *)    
-       | While of bExp * stmnt       (* while statement *)
+        | Skip                        (* does nothing *)
+        | Ass of string * aExp        (* variable assignment *)
+        | Seq of stmnt * stmnt        (* sequential composition *)
+        | ITE of bExp * stmnt * stmnt (* if-then-else statement *)    
+        | While of bExp * stmnt       (* while statement *)
 
     let evalStmnt _ = failwith "not implemented"
 
