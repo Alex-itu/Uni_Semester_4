@@ -2,7 +2,11 @@
 
 (* Exercise 5.1 *)
 
-let sum _ = failwith "not implemented"
+let rec sum (x,z) = 
+    match x,z with
+    | x, 0 -> x + 0
+    | x, z-> sum(x, (z-1)) + z
+
 
 (* Exercise 5.2 *)
 
