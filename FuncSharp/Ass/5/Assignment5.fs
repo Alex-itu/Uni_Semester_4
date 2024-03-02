@@ -46,20 +46,20 @@ let factA x =
 let factC x = 
     let rec aux folder acc  =
         match acc with
-        | 0 -> acc
-        | x' -> aux (fun r -> folder (x' * r) ) (x' - 1)
+        | 0 -> folder 1
+        | x' -> aux (fun r -> folder (x' * r)) (x' - 1)
     aux id x
 
 (* TODO: *)
 (* Compare the running time between factA and factC. Which solution is faster and why? 
-FactA is faster then factC by a lot. When given 1000000, factC takes 00:00:04.254,
-whereas factA only takes 00:00:00.080. This big different must be to all the extra functions
+FactA is faster then factC by a lot. When given 1000000, factC takes 00:00:00.022,
+whereas factA only takes 00:00:00.002. This big different must be to all the extra functions
 that factC has, since each recursing "makes" a new function. that then has to be counted up.
 that or I did something wrong with it. I thought that continuation would be faster, but i guess
 even if you make sure that the heap is used instead of the stack frames, it does not mean it's faster.
 And so just having a "normal" recursion is faster in this case.
 
-ps. I couldnt figger out how to do this with function instead match with.
+ps. I couldnt figuer out how to do this with function instead match with.
 I dont think that has anything to do with the runtime, so i think this is right. 
 *)
 
