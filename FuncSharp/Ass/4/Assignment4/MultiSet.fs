@@ -1,40 +1,72 @@
 module MultiSet
 
-    type MultiSet<'a when 'a : comparison> = R of unit // replace with your type
+    type MultiSet<'a when 'a : comparison> = R of Map<'a, uint32> // replace with your type
 
-    let empty = R ()
+    let empty = R (Map.empty)
 
-    let isEmpty (_ : MultiSet<'a>) = true
+    let isEmpty (s : MultiSet<'a>) = 
+        match s with
+        | R(m) -> Map.isEmpty m
 
-    let size (R ()) = 0u
+    // let isEmptyExtra (R (s)) = 
+    //     match s with
+    //     | m -> Map.fold (fun _ _ acc -> false) true m
+
+    let size (R (s)) = 
+        match s with
+        | m -> Map.fold (fun sumVal _ mapVal  -> sumVal + mapVal) 0u m
+
+    let contains (a : 'a) (s : MultiSet<'a>) = 
+        match s with
+        | R(m) -> Map.containsKey a m
+
+    let numItems (a : 'a) (s : MultiSet<'a>) = 
+        match s with 
+        | R(m) -> 
+            match Map.tryFind a m with
+            | Some elem -> elem
+            | None -> 0u
+
+    let add (a: 'a) (n : uint32) (s : MultiSet<'a>) : MultiSet<'a> = 
+        match s with
+        | R (m) -> R(m.Add (a, ((numItems a s) + n)))
+        // (numItems a s) + n) get the current number of the key and adds n onto that number
+
+    let addSingle (a : 'a) (s : MultiSet<'a>) : MultiSet<'a> = 
+        match s with
+        | R(m) -> add a 1u s
     
-    let contains (_ : 'a) (_ : MultiSet<'a>) = true
-
-    let numItems (_ : 'a) (_ : MultiSet<'a>) = 0u
-
-    let add (_ : 'a) (_ : uint32) (_ : MultiSet<'a>) : MultiSet<'a> = R ()
-
-    let addSingle (_ : 'a) (_ : MultiSet<'a>) : MultiSet<'a> = R ()
     
-    let remove (_ : 'a) (_ : uint32) (_  : MultiSet<'a>) : MultiSet<'a> = R ()
-
-    let removeSingle (_ : 'a) (_ : MultiSet<'a>) : MultiSet<'a>= R ()
-
-
-    let fold (_ : 'b -> 'a -> uint32 -> 'b) (x : 'b) (_ : MultiSet<'a>) = x 
-    let foldBack (_ : 'a -> uint32 -> 'b -> 'b) (_ : MultiSet<'a>) (x : 'b) = x
+    let remove (a : 'a) (n : uint32) (s : MultiSet<'a>) : MultiSet<'a> = 
+        let getCurrent = numItems a s
+        match s with // m.Remove(a) |> R (m.Add(a, ((numItems a s) - n)))
+        | R (m) when getCurrent > n  -> R (m.Remove(a).Add(a, (getCurrent - n)))
+        | R (m) -> R (m.Remove a)
     
-    let ofList (_ : 'a list) : MultiSet<'a> = R ()
+    let removeSingle (a : 'a) (s : MultiSet<'a>) : MultiSet<'a> = 
+        match s with
+        | R(m) -> remove a 1u s
+
+
+    let fold (f : 'b -> 'a -> uint32 -> 'b) (x : 'b) (s : MultiSet<'a>) = 
+        match s with
+        | R (m) -> Map.fold f x m
+    let foldBack (f : 'a -> uint32 -> 'b -> 'b) (s : MultiSet<'a>) (x : 'b) = 
+        match s with
+        | R (m) -> Map.foldBack f m x
+    
+    // yellow
+    let ofList (_ : 'a list) : MultiSet<'a> = empty
     let toList (_ : MultiSet<'a>) : 'a list = []
 
 
-    let map (_ : 'a -> 'b) (_ : MultiSet<'a>) : MultiSet<'b> = R ()
+    let map (_ : 'a -> 'b) (_ : MultiSet<'a>) : MultiSet<'b> = empty
 
-    let union (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = R ()
-    let sum (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = R ()
+    let union (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = empty
+    let sum (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = empty
     
-    let subtract (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = R ()
+    let subtract (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = empty
     
-    let intersection (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = R ()
+    let intersection (_ : MultiSet<'a>) (_ : MultiSet<'a>) : MultiSet<'a> = empty
        
     

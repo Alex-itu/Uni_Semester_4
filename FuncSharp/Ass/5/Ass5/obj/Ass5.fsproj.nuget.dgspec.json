@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj": {}
+    "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj": {}
   },
   "projects": {
-    "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj": {
+    "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj",
+        "projectUniqueName": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj",
         "projectName": "Ass5",
-        "projectPath": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj",
-        "packagesPath": "C:\\Users\\Alexa\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\obj\\",
+        "projectPath": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\Ass5.fsproj",
+        "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
+        "outputPath": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\5\\Ass5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Alexander\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\8.0.102\\FSharp\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\8.0.100\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,7 +37,7 @@
             "FSharp.Core": {
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[8.0.101, )",
+              "version": "[8.0.100, )",
               "generatePathProperty": true
             }
           },
@@ -57,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

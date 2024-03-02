@@ -108,19 +108,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alexa\\.nuget\\packages\\": {}
+    "C:\\Users\\Alexander\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\Ass4.fsproj",
+      "projectUniqueName": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\Ass4.fsproj",
       "projectName": "Ass4",
-      "projectPath": "C:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\Ass4.fsproj",
-      "packagesPath": "C:\\Users\\Alexa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alexa\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\obj\\",
+      "projectPath": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\Ass4.fsproj",
+      "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
+      "outputPath": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\4\\Ass4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alexa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Alexander\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
