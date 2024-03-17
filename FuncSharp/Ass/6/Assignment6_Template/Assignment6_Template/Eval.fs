@@ -10,10 +10,28 @@
     let emptyState = mkState [] [] []
     
     //green 6.7
-    let add a b = failwith "Not implemented"      
+    let add a b = a >>= (fun s -> b >>= (fun ss -> ret (s + ss)))      
     
+    let sub a b = a >>= (fun s -> b >>= (fun ss -> ret (s - ss)))
+
     //green 6.8
-    let div a b = failwith "Not implemented"      
+    let div a b = a >>= (fun s -> b >>= (fun ss -> 
+        match s, ss with
+        | _, 0 -> fail DivisionByZero
+        | s, ss -> ret (s / ss)
+        )) 
+
+    let mul a b = a >>= (fun s -> b >>= (fun ss -> 
+        match s, ss with
+        | _, 0 -> fail DivisionByZero
+        | s, ss -> ret (s * ss)
+        ))     
+
+    let modd a b = a >>= (fun s -> b >>= (fun ss -> 
+        match s, ss with
+        | _, 0 -> fail DivisionByZero
+        | s, ss -> ret (s * ss)
+        )) 
 
     type aExp =
         | N of int
@@ -67,11 +85,42 @@
     let (.>.) a b = ~~(a .=. b) .&&. (a .>=. b) (* numeric greater than *)    
 
     //green 6.9
-    let arithEval a : SM<int> = failwith "Not implemented"      
+    let rec arithEval a : SM<int> = 
+        match a with
+        | N x -> ret x
+        | V x -> lookup x 
+        | WL -> wordLength
+        | PV x -> (arithEval x) >>= pointValue
+        | Add(x, z) -> add (arithEval x)  (arithEval z) 
+        | Sub(x, z) -> sub (arithEval x)  (arithEval z) 
+        | Mul(x, z) -> mul (arithEval x)  (arithEval z)
+        | Div(x, z) -> div (arithEval x)  (arithEval z)
+        | Mod(x, z) -> modd (arithEval x)  (arithEval z)
 
-    let charEval c : SM<char> = failwith "Not implemented"      
+    let rec charEval c : SM<char> = 
+        match c with
+        | C x -> ret x
+        | ToUpper x -> System.Char.ToUpper(charEval x)
+        | ToLower x -> System.Char.ToLower(charEval x)
+        | CV x -> charEval (match w |> List.tryItem(arithEval x w s) with
+                                    | Some (cc, _) -> C cc
+                                    | _ -> C ' ') w s
+      
 
-    let boolEval b : SM<bool> = failwith "Not implemented"
+    let rec boolEval b : SM<bool> = 
+        match b with
+        | TT -> ret true
+        | FF -> ret false
+
+        | AEq(x, z) -> arithEval x  = arithEval z
+        | ALt(x, z) -> arithEval x  < arithEval z
+
+        | Not x -> not (boolEval x)
+        | Conj(x, z) -> boolEval x w s && boolEval z w s
+
+        | IsDigit x -> System.Char.IsDigit(charEval x w s)
+        | IsLetter x -> System.Char.IsLetter(charEval x w s)
+        | IsVowel x -> isVowel x
 
 
     type stmnt =                  (* statements *)
