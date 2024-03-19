@@ -10,27 +10,25 @@
     let emptyState = mkState [] [] []
     
     //green 6.7
+    // I made these into a big helper function at 6.9, so i am using these
     let add a b = a >>= (fun s -> b >>= (fun ss -> ret (s + ss)))      
     
     let sub a b = a >>= (fun s -> b >>= (fun ss -> ret (s - ss)))
 
     //green 6.8
+    // I made these into a big helper function at 6.9, so i am using these
     let div a b = a >>= (fun s -> b >>= (fun ss -> 
         match s, ss with
         | _, 0 -> fail DivisionByZero
         | s, ss -> ret (s / ss)
         )) 
 
-    let mul a b = a >>= (fun s -> b >>= (fun ss -> 
-        match s, ss with
-        | _, 0 -> fail DivisionByZero
-        | s, ss -> ret (s * ss)
-        ))     
+    let mul a b = a >>= (fun s -> b >>= (fun ss -> ret (s * ss)))   
 
     let modd a b = a >>= (fun s -> b >>= (fun ss -> 
         match s, ss with
         | _, 0 -> fail DivisionByZero
-        | s, ss -> ret (s * ss)
+        | s, ss -> ret (s % ss)
         )) 
 
     type aExp =
@@ -84,6 +82,23 @@
     let (.>=.) a b = ~~(a .<. b)                (* numeric greater than or equal to *)
     let (.>.) a b = ~~(a .=. b) .&&. (a .>=. b) (* numeric greater than *)    
 
+    let doSomething a b tp=
+        match tp with
+        | "add" -> a >>= (fun s -> b >>= (fun ss -> ret (s + ss)))
+        | "sub" ->  a >>= (fun s -> b >>= (fun ss -> ret (s - ss)))
+        | "mul" ->  a >>= (fun s -> b >>= (fun ss ->  ret (s * ss)))
+        | "div" -> a >>= (fun s -> 
+            b >>= (fun ss -> 
+            match s, ss with
+            | _, 0 -> fail DivisionByZero
+            | s, ss -> ret (s / ss)
+            ))
+        | "mod" -> a >>= (fun s -> b >>= (fun ss -> 
+            match s, ss with
+            | _, 0 -> fail DivisionByZero
+            | s, ss -> ret (s % ss)
+            )) 
+
     //green 6.9
     let rec arithEval a : SM<int> = 
         match a with
@@ -91,36 +106,53 @@
         | V x -> lookup x 
         | WL -> wordLength
         | PV x -> (arithEval x) >>= pointValue
-        | Add(x, z) -> add (arithEval x)  (arithEval z) 
-        | Sub(x, z) -> sub (arithEval x)  (arithEval z) 
-        | Mul(x, z) -> mul (arithEval x)  (arithEval z)
-        | Div(x, z) -> div (arithEval x)  (arithEval z)
-        | Mod(x, z) -> modd (arithEval x)  (arithEval z)
-
-    let rec charEval c : SM<char> = 
+        | Add(x, z) -> doSomething (arithEval x)  (arithEval z) "add"
+        | Sub(x, z) -> doSomething (arithEval x)  (arithEval z) "sub"
+        | Mul(x, z) -> doSomething (arithEval x)  (arithEval z) "mul"
+        | Div(x, z) -> doSomething (arithEval x)  (arithEval z) "div"
+        | Mod(x, z) -> doSomething (arithEval x)  (arithEval z) "mod"
+        | CharToInt x -> (charEval x) >>= (fun s -> ret (int s))
+    and charEval c : SM<char> = 
         match c with
         | C x -> ret x
-        | ToUpper x -> System.Char.ToUpper(charEval x)
-        | ToLower x -> System.Char.ToLower(charEval x)
-        | CV x -> charEval (match w |> List.tryItem(arithEval x w s) with
-                                    | Some (cc, _) -> C cc
-                                    | _ -> C ' ') w s
-      
-
+        | ToUpper x -> charEval x >>= (fun z -> ret (System.Char.ToUpper(z)))
+        | ToLower x -> charEval x >>= (fun z -> ret (System.Char.ToLower(z)))
+        | CV x -> (arithEval x) >>= characterValue 
+    
+    
+    // for some reason, I cant do this:
+    // let doSomethingBool (a : SM<'a>) (b : SM<'a>) tp =
+    //     match tp with
+    //     | "aeq" -> a >>= (fun s -> b >>= (fun ss -> ret (s = ss)))
+    //     | "alt" -> a >>= (fun s -> b >>= (fun ss -> ret (s < ss)))
+    //     | "conj" -> a >>= (fun s -> b >>= (fun ss -> ret (s && ss)))
+    //     | "???" -> a >>= (fun s -> b >>= (fun ss -> ret (s > ss)))
+    
+    // let isVowel c = 
+    //   let bigC = c
+    //   match bigC with
+    //   |  'A' | 'E' | 'I' | 'O' | 'U' -> ret true
+    //   | _ -> ret false
+    
     let rec boolEval b : SM<bool> = 
         match b with
         | TT -> ret true
         | FF -> ret false
+        
+        | AEq(x, z) -> (arithEval x) >>= (fun s -> (arithEval z) >>= (fun ss -> ret (s = ss)))
+        | ALt(x, z) -> (arithEval x) >>= (fun s -> (arithEval z) >>= (fun ss -> ret (s < ss)))
 
-        | AEq(x, z) -> arithEval x  = arithEval z
-        | ALt(x, z) -> arithEval x  < arithEval z
+        | Not x -> (boolEval x) >>= (fun z -> ret (not z))
+        | Conj(x, z) -> (boolEval x) >>= (fun s -> (boolEval z) >>= (fun ss -> ret (s && ss)))
 
-        | Not x -> not (boolEval x)
-        | Conj(x, z) -> boolEval x w s && boolEval z w s
+        | IsDigit x -> (charEval x) >>= (fun s -> ret (System.Char.IsDigit(s)))
+        | IsLetter x -> (charEval x) >>= (fun s -> ret (System.Char.IsLetter(s)))
+        | IsVowel x -> (charEval x) >>= (fun s -> ret(
+            match s with
+            |  'A' | 'E' | 'I' | 'O' | 'U' -> true
+            | _ -> false))
 
-        | IsDigit x -> System.Char.IsDigit(charEval x w s)
-        | IsLetter x -> System.Char.IsLetter(charEval x w s)
-        | IsVowel x -> isVowel x
+    
 
 
     type stmnt =                  (* statements *)
