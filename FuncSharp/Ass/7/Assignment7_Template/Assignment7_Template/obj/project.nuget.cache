@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "gmd+gul+XVoP0lZGnf4hwTB3u62PRkrs0bFp27tkm9cmf7SwIgARBgJEf/MczvY/5ABt9VSHfW5YisdX8ypFlA==",
+  "success": true,
+  "projectFilePath": "d:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\Ass\\7\\Assignment7_Template\\Assignment7_Template\\Assignment7_Template.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Alexander\\.nuget\\packages\\fparsec\\1.1.1\\fparsec.1.1.1.nupkg.sha512",
+    "C:\\Users\\Alexander\\.nuget\\packages\\fsharp.core\\8.0.100\\fsharp.core.8.0.100.nupkg.sha512",
+    "C:\\Users\\Alexander\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\Alexander\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\Alexander\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\Alexander\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}
