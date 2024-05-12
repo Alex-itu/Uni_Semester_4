@@ -10,11 +10,24 @@ l = 0
 
 def findMin(sprinklers):
     hi = 0
+    lo = l
     
+    count = 0
     # for each sprinkler in the list
     for s in sprinklers:
+        current = count
         
-        
+        # if the left side of the sprinkler is less than the low
+        if s[1] < lo:
+            lo = s[1]
+            count += 1
+            
+        # if the right side of the sprinkler is greater than the high
+        if s[2] > hi:
+            hi = s[2]
+            if count != current + 1:
+                count += 1  
+            
         if lo <= 0 and hi >= l:
             return count
         
@@ -27,19 +40,19 @@ for line in sys.stdin:
             r -= 1
             
             # List of tuples (range, left side, right side)
-            # first element is range on left side
+            # second element is range on left side
             ls = x-r
             
-            # second element is range on right side
+            # third element is range on right side
             rs = x+r
             
+            
             # first element is the "length" of the range (used for sorting)
-            # rang = rs - (ls)
+            rang = rs - (ls)
             
             # apppend the ring into the list with the range first so that it can be sorted by that
             # the left and right side are added so the range for each side is there
-            # sprinklerInfo.append(((rang),(ls),(rs)))
-            sprinklerInfo.append((ls,rs))
+            sprinklerInfo.append(((rang),(ls),(rs)))
             n -= 1
             
             if n == 0:
