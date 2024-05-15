@@ -11,7 +11,10 @@
     
     //green 6.7
     // I made these into a big helper function at 6.9, so i am using these
-    let add a b = a >>= (fun s -> b >>= (fun ss -> ret (s + ss)))      
+    let add a b = 
+        a >>= fun s -> 
+        b >>= fun ss -> 
+        ret (s + ss)      
     
     let sub a b = a >>= (fun s -> b >>= (fun ss -> ret (s - ss)))
 
@@ -85,8 +88,8 @@
     let doSomething a b tp=
         match tp with
         | "add" -> a >>= (fun s -> b >>= (fun ss -> ret (s + ss)))
-        | "sub" ->  a >>= (fun s -> b >>= (fun ss -> ret (s - ss)))
-        | "mul" ->  a >>= (fun s -> b >>= (fun ss ->  ret (s * ss)))
+        | "sub" -> a >>= (fun s -> b >>= (fun ss -> ret (s - ss)))
+        | "mul" -> a >>= (fun s -> b >>= (fun ss ->  ret (s * ss)))
         | "div" -> a >>= (fun s -> 
             b >>= (fun ss -> 
             match s, ss with
@@ -120,9 +123,10 @@
         | CV x -> (arithEval x) >>= characterValue 
     
     
-    // for some reason, I cant do this:
+    //for some reason, I cant do this:
     // let doSomethingBool (a : SM<'a>) (b : SM<'a>) tp =
     //     match tp with
+    //     | "add" -> a >>= (fun s -> b >>= (fun ss -> ret (s + ss)))
     //     | "aeq" -> a >>= (fun s -> b >>= (fun ss -> ret (s = ss)))
     //     | "alt" -> a >>= (fun s -> b >>= (fun ss -> ret (s < ss)))
     //     | "conj" -> a >>= (fun s -> b >>= (fun ss -> ret (s && ss)))
