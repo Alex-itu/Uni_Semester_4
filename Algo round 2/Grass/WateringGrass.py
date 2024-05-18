@@ -8,15 +8,46 @@ l = 0
 # and then just keep track of how far it goes to the right
 # then you would sort on the left side (ls)
 
+# 
+
 def findMin(sprinklers):
     hi = 0
+    count = 0
+    currentMax = 0
+    
+    # for i = 0; i < n and ; i++:
+    #     if sprinklers[i][0] > currentMax:
+    #         currentMax = sprinklers[i][0]
+    
+    for s in sprinklers:
+        if s[1] < hi:
+            continue
+        elif s[0] <= currentMax:
+            currentMax = s[1]
+            count += 1
+    
+    if currentMax >= l:
+        return count
+    else:
+        return -1
+
+            
+    
+    
+    
     
     # for each sprinkler in the list
     for s in sprinklers:
         
         
-        if lo <= 0 and hi >= l:
-            return count
+        
+        if s[0] <= hi and s[1] >= hi:
+            hi = s[1]
+            count += 1
+        
+        if hi >= l:
+            return count 
+             
         
     return -1
 
@@ -24,7 +55,7 @@ for line in sys.stdin:
     if n > 0:
         x,r = map(int,line.split())
         if (r+r) > w and n > 0: # If not then that sprinkler diameter won't help cover anything
-            r -= 1
+            r -= 0.1
             
             # List of tuples (range, left side, right side)
             # first element is range on left side
@@ -43,10 +74,10 @@ for line in sys.stdin:
             n -= 1
             
             if n == 0:
-                print(findMin(sorted(sprinklerInfo, reverse=True)))
+                print(findMin(sorted(sprinklerInfo)))
         
         elif n == 0:
-            print(findMin(sprinklerInfo))
+            print(findMin(sorted(sprinklerInfo)))
         
         else:
             n -= 1
