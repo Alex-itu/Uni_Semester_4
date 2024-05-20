@@ -18,7 +18,7 @@ def findMin(sprinklers):
         current = count
         
         # if the left side of the sprinkler is less than the low
-        if s[1] < lo:
+        if s[1] < lo and s[0]:
             lo = s[1]
             count += 1
             
@@ -52,7 +52,8 @@ for line in sys.stdin:
             
             # apppend the ring into the list with the range first so that it can be sorted by that
             # the left and right side are added so the range for each side is there
-            sprinklerInfo.append(((rang),(ls),(rs)))
+            if rang != 0:
+                sprinklerInfo.append(((rang),(ls),(rs)))
             n -= 1
             
             if n == 0:
