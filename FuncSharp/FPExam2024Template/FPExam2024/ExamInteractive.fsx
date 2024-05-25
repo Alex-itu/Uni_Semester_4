@@ -10,3 +10,8 @@
 #load "JParsec.fs"
 #load "Exam.fs"
 open Exam2024;;
+let testQ1 () =
+    (* Testsfor Q1.1 *)
+    printfn "Testing Question 1"
+
+    ()

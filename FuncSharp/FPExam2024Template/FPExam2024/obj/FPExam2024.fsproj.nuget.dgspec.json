@@ -1,26 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2024/Exam/FPExam2024Template/FPExam2024/FPExam2024.fsproj": {}
+    "D:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\FPExam2024Template\\FPExam2024\\FPExam2024.fsproj": {}
   },
   "projects": {
-    "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2024/Exam/FPExam2024Template/FPExam2024/FPExam2024.fsproj": {
+    "D:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\FPExam2024Template\\FPExam2024\\FPExam2024.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2024/Exam/FPExam2024Template/FPExam2024/FPExam2024.fsproj",
+        "projectUniqueName": "D:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\FPExam2024Template\\FPExam2024\\FPExam2024.fsproj",
         "projectName": "FPExam2024",
-        "projectPath": "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2024/Exam/FPExam2024Template/FPExam2024/FPExam2024.fsproj",
-        "packagesPath": "/Users/jebe/.nuget/packages/",
-        "outputPath": "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2024/Exam/FPExam2024Template/FPExam2024/obj/",
+        "projectPath": "D:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\FPExam2024Template\\FPExam2024\\FPExam2024.fsproj",
+        "packagesPath": "C:\\Users\\Alexander\\.nuget\\packages\\",
+        "outputPath": "D:\\Code\\UNI\\Semester_4\\Uni_Semester_4\\FuncSharp\\FPExam2024Template\\FPExam2024\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jebe/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alexander\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/Users/jebe/.dotnet/sdk/7.0.101/FSharp/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\8.0.204\\FSharp\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -28,6 +30,11 @@
             "targetAlias": "net7.0",
             "projectReferences": {}
           }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -37,7 +44,7 @@
             "FSharp.Core": {
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[7.0.0, )",
+              "version": "[8.0.200, )",
               "generatePathProperty": true
             }
           },
@@ -52,12 +59,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/Users/jebe/.dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }
