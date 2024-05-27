@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "WJTew3Ge1LrtkLw8LGpLsdx+uu77H2mVp6t83fp57mwUGp82dRYm6Mmgj4qyXQRBuewHt649vNXkbxhfENfCdA==",
+  "success": true,
+  "projectFilePath": "/Users/jebe/Library/CloudStorage/OneDrive-ITU/teaching/courses/FP2023/ReExam/Solution/FPReExam2023/FPReExam2023.fsproj",
+  "expectedPackageFiles": [
+    "/Users/jebe/.nuget/packages/fsharp.core/7.0.0/fsharp.core.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

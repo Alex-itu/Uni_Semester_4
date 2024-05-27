@@ -69,6 +69,7 @@ let rec foo =
     | x when x % 2 = 0 -> foo (x / 2) + "0" // When x is even, run foo with half x (int division) and add "0" to the result
     | x when x % 2 = 1 -> foo (x / 2) + "1" // When x is uneven, run foor with half x (int division) and add "1" to the result
 
+
 let rec bar =
     function
     | [] -> []
